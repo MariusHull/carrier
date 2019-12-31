@@ -62,15 +62,3 @@ Carrier is organized as such :
         |_ snippets
     |_ utilities
 ```
-
-# Build with Docker 
-
-To build the image, run from root file : 
-
-`docker build -t [your_dockerhub_id]/carrier-front .`
-
-Then to run the container : 
-
-`docker run --rm --name carrier-front -p 8888:3000 -d [your_dockerhub_id]/carrier-front`
-
-If you wish to stop the container, then run `docker stop carrier-front` (it will remove the container too).
