@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 
 class Footer extends Component {
@@ -14,8 +13,8 @@ class Footer extends Component {
 
   render() {
     return (
-      <nav class="navbar fixed-bottom navbar-light bg-light">
-        <a class="navbar-brand" href="#">Fixed bottom</a>
+      <nav className="navbar fixed-bottom navbar-light bg-light">
+        <Link className="navbar-brand" to="/home">Fixed bottom</Link>
       </nav>
     );
   }

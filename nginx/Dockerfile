@@ -1,5 +1,5 @@
 FROM nginx:alpine
-LABEL maintainer="info@archsys.io"
+LABEL maintainer="marius.hullin@gmail.com"
 
 RUN rm /etc/nginx/conf.d/default.conf
 ADD default.conf /etc/nginx/conf.d/default.conf

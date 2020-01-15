@@ -17,27 +17,32 @@ class Navbar extends Component {
 
   render() {
     return (
-      <nav class="navbar fixed-top navbar-expand-lg navbar-expand-md navbar-light bg-light">
-          <Link class="navbar-brand" to="/">
-            <img src="/docs/4.4/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt=""/>
+      <nav className="navbar fixed-top navbar-expand-lg navbar-expand-md navbar-light bg-light carrier-navbar">
+          <Link className="navbar-brand" to="/">
+            <img src="/docs/4.4/assets/brand/bootstrap-solid.svg" width="30" height="30" className="d-inline-block align-top" alt=""/>
             Carrier
           </Link>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
           </button>
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item">
-                <Link class="nav-link" to="/">Home</Link>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav mr-auto">
+              <li className="nav-item">
+                <Link className="nav-link" to="/">Home</Link>
               </li>
-              <li class="nav-item">
-                <Link class="nav-link" to="/services">Services</Link>
+              <li className="nav-item">
+                <Link className="nav-link" to="/services">Services</Link>
               </li>
+              {!localStorage.getItem('jwtToken') && !localStorage.getItem("Admin") &&
+                <li className="nav-item">
+                  <Link className="nav-link" to="/admin">Admin</Link>
+                </li>
+            }
             </ul>
             {!localStorage.getItem('jwtToken') &&
               <div>
-                <button class="btn btn-primary" onClick={this.logout}>Logout</button>
+                <button className="btn btn-primary" onClick={this.logout}>Logout</button>
               </div>
             }
           </div>

@@ -6,6 +6,14 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 
+const {
+  MONGO_USERNAME,
+  MONGO_PASSWORD,
+  MONGO_HOSTNAME,
+  MONGO_PORT,
+  MONGO_DB
+} = process.env;
+
 // Requiring the different routes of the project
 var auth = require('./routes/auth');
 var book = require('./routes/book');
@@ -27,10 +35,24 @@ app.use(function(req, res, next) {
   next();
 });
 
+// Options for the mongoose connect method
+const options = {
+  useNewUrlParser: true,
+  reconnectTries: Number.MAX_VALUE,
+  reconnectInterval: 500, 
+  connectTimeoutMS: 10000,
+  promiseLibrary: require('bluebird'),
+};
 
-mongoose.connect('mongodb+srv://moniUser:moniMoney@monithor-b5vvj.mongodb.net/test?retryWrites=true&w=majority', { promiseLibrary: require('bluebird') })
-  .then(() =>  console.log('connection succesful'))
-  .catch((err) => console.error(err));
+// Connection to the database
+const url = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}?authSource=admin`;
+mongoose.connect(url, options)
+  .then(() =>  console.log('Connection to database succesful!'))
+  .catch((err) => console.error(`Database connection failed : \n${err}`));
+
+// mongoose.connect('mongodb+srv://moniUser:moniMoney@monithor-b5vvj.mongodb.net/test?retryWrites=true&w=majority', { promiseLibrary: require('bluebird') })
+//   .then(() =>  console.log('connection succesful'))
+//   .catch((err) => console.error(err));
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
