@@ -1,3 +1,4 @@
-const url = "http://localhost:3001";
+const baseUrl = "http://localhost:3001";
+const serviceUrl = baseUrl + "/back/api/service"
 
-export default url;
+export { baseUrl, serviceUrl };

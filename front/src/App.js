@@ -11,6 +11,9 @@ import Services from "./components/Services";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Admin from "./components/Admin";
+import ServiceDetail from "./components/ServiceDetail";
+import NewService from "./components/NewService";
+import EditService from "./components/EditService";
 
 class App extends Component {
   render() {
@@ -26,6 +29,9 @@ class App extends Component {
                 <Route path='/register' component={Register} />
                 <Route path='/services' component={Services} />
                 <Route path='/admin' component={Admin} />
+                <Route path="/service/:id" component={ServiceDetail} />
+                <Route path="/service/new" component={NewService} />
+                <Route path="/service/edit/:id" component={EditService} />
               </div>
               <Footer />
             </div>

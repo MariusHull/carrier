@@ -11,7 +11,7 @@ export default class Admin extends Component {
   render() {
     return (
       <div className="container">
-        <h1>Welcome your administration dashboard! </h1>
+        <h1>Welcome to your administration dashboard! </h1>
       </div>
     );
   }
